@@ -1,20 +1,14 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu-16.04-amd64"
-
-  config.vm.hostname = "mail.example.com"
-
-  config.vm.network "private_network", ip: "192.168.33.254"
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.linked_clone = true
-    vb.memory = "1024"
-  end
-
-  config.vm.provision "shell", path: "provision-powerdns.sh"
-  config.vm.provision "shell", path: "provision-postfix.sh"
-  config.vm.provision "shell", path: "provision-dovecot.sh"
-  config.vm.provision "shell", path: "provision.sh"
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.network "forwarded_port", guest:25565, host:25565, auto_correct: true
+  config.vm.synced_folder "/home/vazogg/Vagrant/Mail_Vagrant", "/var/sync/"
+  config.vm.hostname = "mail"
+  # config.ssh.pty = true
+config.vm.provider "virtualbox" do |vb|
+  vb.memory = "1024"  
+  vb.name = "mail"
+end
+config.vm.provision "shell", inline: <<-SHELL
+	sudo apt-get update
+SHELL
 end
