@@ -10,5 +10,12 @@ config.vm.provider "virtualbox" do |vb|
 end
 config.vm.provision "shell", inline: <<-SHELL
 	sudo apt-get update
+	sudo apt-get upgrade
+	sudo hostnamectl set-hostname mail.vazogg.gotdns.ch
+	# To Do: Test if editing hosts file in Vagrant works.
+	echo "127.0.0.1	mail.vazogg.gotdns.ch	localhost" >> /etc/hosts
+	hostname -f
+	
+	
 SHELL
 end
