@@ -14,6 +14,6 @@ config.vm.provider "virtualbox" do |vb|
 end
 config.vm.provision "shell", inline: <<-SHELL
 	sudo apt-get update
-	sudo apt-get upgrade	
+	sudo apt-get upgrade
 SHELL
 end
