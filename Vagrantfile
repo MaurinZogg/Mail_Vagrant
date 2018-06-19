@@ -10,7 +10,6 @@ Vagrant.configure(2) do |config|
   # Edit the first Path according to your Host directory
   config.vm.synced_folder "/home/vazogg/Vagrant/Mail_Vagrant", "/var/sync/"
   config.vm.hostname = "mail"
-  config.vm.define = "mail"
 config.vm.provider "virtualbox" do |vb|
   vb.memory = "1024"  
   vb.name = "mail"
