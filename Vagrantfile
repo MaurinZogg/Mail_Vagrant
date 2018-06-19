@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest:25, host:2500, auto_correct: true
   config.vm.network "forwarded_port", guest:110, host:1100, auto_correct: true
   config.vm.network "forwarded_port", guest:143, host:1430, auto_correct: true
-  config.vm.network "forwarded_port", guest:2000, host:2000, auto_correct: true
+  config.vm.network "forwarded_port", guest:20, host:2000, auto_correct: true
   config.vm.synced_folder "/home/vazogg/Vagrant/Mail_Vagrant", "/var/sync/"
   config.vm.hostname = "mail"
   # config.ssh.pty = true
