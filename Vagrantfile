@@ -18,5 +18,8 @@ end
 config.vm.provision "shell", inline: <<-SHELL
 	sudo apt-get update -y
 	sudo apt-get upgrade -y
+	sudo apt-get install apache2 -y
+	cp /var/sync/ports.conf /etc/apache2/
+	sudo /etc/init.d/apache2 restart
 SHELL
 end
