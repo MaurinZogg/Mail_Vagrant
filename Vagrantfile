@@ -1,5 +1,5 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ndn-jenkins/ubuntu1804-amd64"
   config.vm.network "forwarded_port", guest:443, host:4443, auto_correct: true
   # Ports for Mailserver
   config.vm.network "forwarded_port", guest:25, host:2500, auto_correct: true
